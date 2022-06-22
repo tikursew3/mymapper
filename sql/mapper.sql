@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-//this is update to test pull request.
 
 CREATE TABLE IF NOT EXISTS db_name.master_data (Topic varchar(10),
 English varchar(25), Telugu varchar(33),
@@ -34,4 +33,4 @@ VALUES ('vegetables', 'Alternanthera sessilis', 'పొన్నగంటి క
 ('vegetables', 'Arum', '\nచేమ దుంప', 'TBD'), 
 ('vegetables', 'Ash gourd', 'బూడిద గుమ్మడి కాయ', 'TBD'), 
 ('vegetables', 'Asparagus', 'తోట తేగ', 'TBD'), 
-('vegetables', 'Asparagus', 'నేలతాడి గడ్డలు', 'TBD'), ('vege[...]
+
