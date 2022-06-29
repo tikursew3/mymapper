@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AdminWordMapper</title>
+  <title>WordMapper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> 
 <script>
@@ -28,7 +28,7 @@ $(document).ready(function(){
 <style>   
 Body {  
   font-family: Calibri, Helvetica, sans-serif;  
-  background-color: pink;  
+  background-color: linen;  
 } 
   .navbar {
   width: 100%;
@@ -179,67 +179,93 @@ tr:nth-child(even) {
 <body>
       <div class="navbar" align="center">
         <a class="active" href="index.php"><i class="fa fa-fw fa-home" style='font-size:100px;'></i>Home</a>
-        <a href="#"><i class="fas fa-user-alt" style='font-size:100px;' onclick="openForm()"></i>Hello Admin</a>
-        <a href="index.php"><i class="fas fa-edit" style='font-size:100px;'></i>List</a>
+        <a href="loginPage.php"><i class="fas fa-user-alt" style='font-size:100px;' onclick="openForm()"></i> Admin Login</a>
+        <a href="list.php"><i class="fas fa-edit" style='font-size:100px;'></i>List</a>
         <a href="#"><i class="  fas fa-id-card-alt" style='font-size:100px;'></i> About Us</a>
-       
-        <a href="index.php"><i class="fas fa-power-off" style='font-size:100px;'></i>Logout</a>
       </div>   
 
-      <center> <h1> Word Mapper For Fruits/Vegetables/Flower/Trees </h1> </center>
+      <center> <h1> Welcome to Word Mapper  </h1> </center>
       
           <input id="myInput" type="text" placeholder="Search...">
           <br><br>
-          <table id="myTable">
-                <thead>
+        
+<?php
+            require_once("connect.php");
+            $sql_query = "SELECT * FROM `master_data` ";
+            
+            $order="asc";
+              if($_GET['orderby']=="ID" && $_GET['$order']=="asc")
+              {
+                $order="desc";
+              }
+              if($_GET['orderby']=="Topic" && $_GET['order']=="asc")
+              {
+                $order="desc";
+              }
+              
+              if($_GET['orderby']=="English" && $_GET['order']=="asc")
+              {
+                $order="desc";
+              }
+              if($_GET['orderby']=="Telugu" && $_GET['order']=="asc")
+              {
+                $order="desc";
+              }
+              if($_GET['orderby']=="Hindi" && $_GET['order']=="asc")
+              {
+                $order="desc";
+              }
+
+              if($_GET['orderby'])
+              {
+                $orderby="order by ".$_GET['orderby'];
+              }
+              if($_GET['order'])
+              {
+                $sort_order=$_GET['order'];
+              }
+
+              //$query_result = mysqli_query($conn,$sql_query.$orderby. " ".$sort_order."");
+              $query_result = mysqli_query($conn,$sql_query.$orderby);
+              
+
+?>
+                <table id="myTable">
+                  <thead>
                       <tr>
-                          <th onclick="sortTable(0)"><a href="#">ID</a></th>
-                          <th onclick="sortTable(1)"><a href="#">Topic</a></th>
-                          <th onclick="sortTable(2)"><a href="#">English</a></th>
-                          <th>Image</th>
+                       <th><a href='?orderby=ID&order=".$order."'>ID</a></th>
+                        <th><a href='?orderby=Topic&order=".$order."'>Topic</a></th>
+                        <th><a href='?orderby=English&order=".$order."'>English</a></th>
+                        <th><a href='?orderby=Telugu&order=".$order."'>Telugu</a></th>
+                        <th><a href='?orderby=Hindi&order=".$order."'>Hindi</a></th>
+                        <th>Image</th>
                       </tr>
-                </thead>
-                <tbody id="myTable">
-                <tr>
-                <?php
-                      $servername   = "localhost";
-                      $username     = "root"; 
-                      $password     = "";
-                      $dbname       = "db_name";
-       
-                      // Creating connection
-                      $conn = new mysqli($servername, $username, $password, $dbname);
-       
-                      // Checking connection
-                      if ($conn->connect_error)
-                      {
-                            die("Connection failed:". $conn->connect_error);
-                      }     
-
-                      $sql = "SELECT * FROM wordmapper ";
-                      $result = $conn->query($sql);
-
-                      if(!$result)
-                      {
-                            die("Invalid Query:".$conn->connect_error);
+                  </thead>
+                  <tbody id="myTable">
+                    
+                    <?php
+                      while($row = mysqli_fetch_assoc($query_result)) { ?>
+                        <tr>
+                              <td> <?php echo $row['ID']; ?></td>
+                              <td> <?php echo $row['Topic']; ?></td>
+                              <td> <?php echo $row['English']; ?></td>
+                              <td> <?php echo $row['Telugu']; ?></td>
+                              <td> <?php echo $row['Hindi']; ?></td>
+                              <td> <?php echo '<img src="data:image;base64,' .base64_encode($row["Image"]). '" alt="Image" style="width: 25px; height: 25px;" >' ; ?></td>
+                        </tr>
+                          <?php
                       }
+                    ?>
+                      
+                  </tbody>
 
-                      //output data of each row
-                      while($row = $result->fetch_assoc())
-                      {
-                            ?>
-                            <td> <?php echo $row['ID']; ?></td>
-                            <td> <?php echo $row['Topic']; ?></td>
-                            <td> <?php echo $row['English']; ?></td>
-                            <td> <?php echo '<img src="data:image;base64,' .base64_encode($row["Image"]). '" alt="Image" style="width: 25px; height: 25px;" >' ; ?></td>
-                          </tr>
-                            <?php
-                      }
-                ?>
-              </tbody>
-          </table>
 
-          <div class="form-popup" id="myForm">
+                </table>        
+
+
+
+
+                <div class="form-popup" id="myForm">
             <form onsubmit="return validateform()" class="form-container" name="login">
               <h1>Login</h1>
 
@@ -290,62 +316,11 @@ tr:nth-child(even) {
                 return false;
             }
         } 
+  </script>
 
-      function sortTable(n) 
-      {
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("myTable");
-        switching = true;
-        
-        //Set the sorting direction to ascending:
-        dir = "asc"; 
-        
-        while (switching) {
-          //start by saying: no switching is done:
-          switching = false;
-          rows = table.rows;
-          /*Loop through all table rows (except the
-          first, which contains table headers):*/
-          for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            /*check if the two rows should switch place,
-            based on the direction, asc or desc:*/
-            if (dir == "asc") {
-              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch= true;
-                break;
-              }
-            } else if (dir == "desc") {
-              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                //if so, mark as a switch and break the loop:
-                shouldSwitch = true;
-                break;
-              }
-            }
-          }
-          if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            //Each time a switch is done, increase this count by 1:
-            switchcount ++;      
-          } else {
-            /*If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again.*/
-            if (switchcount == 0 && dir == "asc") {
-              dir = "desc";
-              switching = true;
-            }
-          }
-        }
-      }
-    </script>
+
+
+
   </body>
 </html> 
+

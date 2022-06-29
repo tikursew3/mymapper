@@ -129,7 +129,7 @@ tr:nth-child(even) {
 
 <body>
     <div class="navbar" align="center">
-          <a class="active" href="AdminPage.php"><i class="fa fa-fw fa-home" style='font-size:100px;'></i>Home</a>
+          <a class="active" href="index.php"><i class="fa fa-fw fa-home" style='font-size:100px;'></i>Home</a>
           <a href="AddToWordMapper.php"><i class="fa fa-fw fa-plus" style='font-size:100px;'></i> Add</a>
           <a href="FruitsMenu.html"><i class="fas fa-apple-alt" style='font-size:100px;'></i>Fruits</a>
           <a href="VegetablesMenu.html"><i class="fas fa-carrot" style='font-size:100px;'></i> Vegetables</a>
@@ -144,8 +144,10 @@ tr:nth-child(even) {
           <thead>
                 <tr>
                     <th onclick="sortTable(0)"><a href="#">ID</a></th>
-                    <th onclick="sortTable(1)"><a href="#">Category</a></th>
-                    <th onclick="sortTable(2)"><a href="#">English Name</a></th>
+                    <th onclick="sortTable(1)"><a href="#">Topic</a></th>
+                    <th onclick="sortTable(2)"><a href="#">English</a></th>
+                    <th onclick="sortTable(2)"><a href="#">Telugu</a></th>
+                    <th onclick="sortTable(2)"><a href="#">Hindi</a></th>
                     <th>Image</th>
                 </tr>
           </thead>
@@ -166,7 +168,7 @@ tr:nth-child(even) {
                       die("Connection failed:". $conn->connect_error);
                 }     
 
-                $sql = "SELECT * FROM wordmapper WHERE category = 'Fruits'";
+                $sql = "SELECT * FROM wordmapper WHERE Topic = 'Fruits'";
                 $result = $conn->query($sql);
 
                 if(!$result)
@@ -179,8 +181,10 @@ tr:nth-child(even) {
                 {
                       ?>
                       <td> <?php echo $row['ID']; ?></td>
-                      <td> <?php echo $row['category']; ?></td>
-                      <td> <?php echo $row['EnglishName']; ?></td>
+                      <td> <?php echo $row['Topic']; ?></td>
+                      <td> <?php echo $row['English']; ?></td>
+                      <td> <?php echo $row['Telugu']; ?></td>
+                      <td> <?php echo $row['Hindi']; ?></td>
                       <td> <?php echo '<img src="data:image;base64,' .base64_encode($row["Image"]). '" alt="Image" style="width: 25px; height: 25px;" >' ; ?></td>
                     </tr>
                       <?php

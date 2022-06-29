@@ -178,12 +178,17 @@ tr:nth-child(even) {
 
 <body>
       <div class="navbar" align="center">
-        <a class="active" href="#"><i class="fa fa-fw fa-home" style='font-size:100px;'></i>Home</a>
-        <a href="#"><i class="fas fa-user-alt" style='font-size:100px;'></i> Hello Admin</a>
-        <a href="adminList.php"><i class="fas fa-edit" style='font-size:100px;'></i>List</a>
-        <a href="AddToWordMapper.php"><i class="fa fa-fw fa-plus" style='font-size:100px;'></i> Add</a>
-        <a href="#"><i class="  fas fa-id-card-alt" style='font-size:100px;'></i> About Us</a>
-        <a href="menu.php"><i class="fas fa-power-off" style='font-size:100px;'></i>Logout</a>
+        <a class="active" href="index.php"><i class="fa fa-fw fa-home" style='font-size:100px;'></i>Home</a>
+       
+        
+        <a href="AddToWordMapper.php"><i class="fa fa-fw fa-plus" style='font-size:100px; color:white'></i> Add</a>
+
+        <a href="#"><i class="fa fas fa-file fa-update-2x" style='font-size:100px; color:white'></i> Update</a>
+        <a href="#"><i class="fa fas fa-minus fa-delete-2x" style='font-size:100px; color:white'></i> Delete</a>
+        
+
+        <a href="#"><i class="  fas fa-id-card-alt" style='font-size:100px; color:white'></i> About Us</a>
+        <a href="index.php"><i class="fas fa-power-off" style='font-size:100px; color:white'></i>Logout</a>
       </div>   
 
       <center> <h1> Word Mapper For Fruits/Vegetables/Flower/Trees </h1> </center>
