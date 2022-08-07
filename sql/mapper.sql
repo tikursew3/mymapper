@@ -482,3 +482,150 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Aug 07, 2022 at 06:36 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `WordMapper`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topic`
+--
+
+CREATE TABLE `topic` (
+  `topic_id` int(11) NOT NULL,
+  `topic_name` varchar(100) NOT NULL,
+  `topic_image` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `topic`
+--
+
+INSERT INTO `topic` (`topic_id`, `topic_name`, `topic_image`) VALUES
+(1, 'Fruits', 0x66727569745f696d6167652e6a706567),
+(2, 'Vegetables', 0x766567657461626c655f696d6167652e6a706567),
+(3, 'Flowers', 0x666c6f776572735f696d6167652e6a706567),
+(4, 'Trees', 0x747265655f696d6167652e6a706567),
+(5, 'Animal', 0x73616d73756e675f7476312e6a706567),
+(6, 'plant', 0x747265655f696d6167652e6a706567),
+(7, 'car', 0x776f6d656e5f64726573732e6a706567),
+(8, 'Pants', 0x776f6d656e5f6f6c646e6176795f6a65616e73312e77656270),
+(9, 'planet', 0x65617274682e6a706567);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `topic`
+--
+ALTER TABLE `topic`
+  ADD PRIMARY KEY (`topic_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `topic`
+--
+ALTER TABLE `topic`
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Aug 07, 2022 at 06:36 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `WordMapper`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_table`
+--
+
+CREATE TABLE `user_table` (
+  `user_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_table`
+--
+
+INSERT INTO `user_table` (`user_id`, `first_name`, `last_name`, `username`, `email`, `password`) VALUES
+(1, 'ja', 'ja', 'ja', 'ja@gmail.com', '$2y$10$QIUbc5IOrR5LNlVcglEf/uQ6m5dtSSWKAIqKQyY3RDHHGD449D3nq');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user_table`
+--
+ALTER TABLE `user_table`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user_table`
+--
+ALTER TABLE `user_table`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
