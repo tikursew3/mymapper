@@ -6,6 +6,7 @@ if(isset($_SESSION['username'])) {
 
 $id  =$_GET['id'];
 $query = "DELETE FROM master_data WHERE ID='$id'";
+echo "<script>alert('you are going to delete this data')</script>";
 
     $result = mysqli_query($conn,$query);
 
