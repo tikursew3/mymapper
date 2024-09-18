@@ -1,3 +1,2 @@
 # mapper
- A mapping framework for words
- blablabla... just for testing haha
+ A mapping framework for words	A Full Stack Word mapper project to map words from different language around the world. I used Bootstrap, jQuery, HTML, CSS, Fontawsome to the frontend and PHP and MYSQL  for the backend. In this project I applied all the necessary functionalities like list by category, flip card, search, dropdown menu, crud, sort, export to different format like csv, excel, pdf etc. and pagination, as well as generating reports in a graph and table formats. Simply real amazing projects.
